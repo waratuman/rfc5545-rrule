@@ -114,6 +114,6 @@ const visitRRuleByMonth = (v: number[]) => visitNumber("BYMONTH", v.map(x => x +
 
 const visitRRuleBySetPosition = (v: number[]) => visitNumber("BYSETPOS", v);
 
-function visitRRuleWeekstart(start: Weekday) {
+function visitRRuleWeekstart(start: Weekday | number) {
     return "WKST=" + weekdays[start];
 }

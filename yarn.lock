@@ -657,6 +657,12 @@ ret@~0.1.10:
   version "0.1.13"
   resolved "https://registry.yarnpkg.com/ret/-/ret-0.1.13.tgz#38c2702ece654978941edd8b7dfac6aeeef4067d"
 
+rfc5545-rrule@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/rfc5545-rrule/-/rfc5545-rrule-1.0.2.tgz#096a0e6199c0e7c144404315f8620a6a9092456b"
+  dependencies:
+    nearley "^2.7.11"
+
 rollup@^0.41.4:
   version "0.41.4"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.41.4.tgz#a970580176329f9ead86854d7fd4c46de752aef8"

@@ -21,8 +21,8 @@ export class Day {
     /** The number representation of the week day (0 for Sunday, 1 for Monday, etc). */
     value: Weekday;
 
-    constructor(weekDay: Weekday, nth?: number) {
-        this.value = weekDay;
+    constructor(weekDay: Weekday | number, nth?: number) {
+        this.value = weekDay as Weekday;
         this.nth = nth;
     }
 
@@ -42,7 +42,7 @@ export interface Options {
     byWeekNumber?: number[];
     byMonth?: number[];
     bySetPosition?: number[];
-    weekStart?: number;
+    weekStart?: Weekday | number;
 }
 
 export class RRule implements Options {
@@ -113,7 +113,7 @@ export class RRule implements Options {
     /**
      * Specifies the day on which the week starts. Defaults to 1 (Monday).
      */
-    weekStart: Weekday = 1;
+    weekStart: Weekday | number = 1;
 
     constructor(options: Options) {
         (Object as any).assign(this, options);

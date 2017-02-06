@@ -1,0 +1,40 @@
+{
+  "name": "rfc5545-rrule",
+  "version": "1.0.0",
+  "description": "RFC 5545 RRule Library",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "tsc -p ./src && qunit -c ./lib/index.js -t ./lib/test/*.js",
+    "compile": "tsc -p ./src"
+  },
+  "keywords": [
+    "RRule",
+    "recurrence",
+    "RFC",
+    "2445",
+    "5545",
+    "iCal",
+    "iCalendar",
+    "calendar",
+    "repeating",
+    "dates",
+    "occurrence",
+    "time",
+    "event"
+  ],
+  "author": "James Bracy <waratuman@gmail.com> (http://waratuman.com)",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^7.0.5",
+    "@types/qunit": "^2.0.31",
+    "apg": "^2.2.2",
+    "qunit": "^0.9.1",
+    "rollup": "^0.41.4",
+    "tslint": "^4.3.1",
+    "typescript": "^2.1.5"
+  },
+  "repository": "https://github.com/waratuman/rfc5545-rrule",
+  "dependencies": {
+    "nearley": "^2.7.11"
+  }
+}

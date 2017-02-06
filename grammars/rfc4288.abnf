@@ -1,0 +1,9 @@
+type-name = reg-name-4288
+subtype-name = reg-name-4288
+
+reg-name-4288 = 1*127reg-name-chars-4288
+reg-name-chars-4288 = ALPHA / DIGIT / "!" /
+                       "#" / "$" / "&" / "." /
+                       "+" / "-" / "^" / "_"
+
+parameter-name-4288 = reg-name-4288

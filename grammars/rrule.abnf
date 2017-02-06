@@ -1,0 +1,143 @@
+rrule = "RRULE" rrulparam ":" recur CRLF
+
+rrulparam  = *(";" other-param)
+
+other-param   = (iana-param / x-param)
+
+iana-param  = iana-token "=" param-value *("," param-value)
+
+iana-token    = 1*(ALPHA / DIGIT / "-")
+
+param-value   = paramtext / quoted-string
+
+paramtext     = *SAFE-CHAR
+
+quoted-string = DQUOTE *QSAFE-CHAR DQUOTE
+
+x-param     = x-name "=" param-value *("," param-value)
+
+x-name        = "X-" [vendorid "-"] 1*(ALPHA / DIGIT / "-")
+
+vendorid      = 3*(ALPHA / DIGIT)
+
+recur           = recur-rule-part *( ";" recur-rule-part )
+
+recur-rule-part = ( "FREQ" "=" freq )
+                       / ( "UNTIL" "=" enddate )
+                       / ( "COUNT" "=" 1*DIGIT )
+                       / ( "INTERVAL" "=" 1*DIGIT )
+                       / ( "BYSECOND" "=" byseclist )
+                       / ( "BYMINUTE" "=" byminlist )
+                       / ( "BYHOUR" "=" byhrlist )
+                       / ( "BYDAY" "=" bywdaylist )
+                       / ( "BYMONTHDAY" "=" bymodaylist )
+                       / ( "BYYEARDAY" "=" byyrdaylist )
+                       / ( "BYWEEKNO" "=" bywknolist )
+                       / ( "BYMONTH" "=" bymolist )
+                       / ( "BYSETPOS" "=" bysplist )
+                       / ( "WKST" "=" weekday )
+
+freq        = "SECONDLY" / "MINUTELY" / "HOURLY" / "DAILY"
+                   / "WEEKLY" / "MONTHLY" / "YEARLY"
+
+enddate     = date / date-time
+
+date               = date-value
+
+date-value         = date-fullyear date-month date-mday
+date-fullyear      = 4DIGIT
+date-month         = 2DIGIT         ; 01-12
+date-mday          = 2DIGIT         ; 01-28, 01-29, 01-30, 01-31
+                                    ; based on month/year
+
+date-time  = date "T" time ; As specified in the DATE and TIME
+                           ; value definitions
+
+time         = time-hour time-minute time-second [time-utc]
+
+time-hour    = 2DIGIT        ;00-23
+time-minute  = 2DIGIT        ;00-59
+time-second  = 2DIGIT        ;00-60
+time-utc     = "Z"
+
+byseclist   = ( seconds *("," seconds) )
+
+seconds     = 1*2DIGIT       ;0 to 60
+
+byminlist   = ( minutes *("," minutes) )
+
+minutes     = 1*2DIGIT       ;0 to 59
+
+byhrlist    = ( hour *("," hour) )
+
+hour        = 1*2DIGIT       ;0 to 23
+
+bywdaylist  = ( weekdaynum *("," weekdaynum) )
+
+weekdaynum  = [[plus / minus] ordwk] weekday
+
+plus        = "+"
+
+minus       = "-"
+
+ordwk       = 1*2DIGIT       ;1 to 53
+
+weekday     = "SU" / "MO" / "TU" / "WE" / "TH" / "FR" / "SA"
+
+bymodaylist = ( monthdaynum *("," monthdaynum) )
+
+monthdaynum = [plus / minus] ordmoday
+
+ordmoday    = 1*2DIGIT       ;1 to 31
+
+byyrdaylist = ( yeardaynum *("," yeardaynum) )
+
+yeardaynum  = [plus / minus] ordyrday
+
+ordyrday    = 1*3DIGIT      ;1 to 366
+
+bywknolist  = ( weeknum *("," weeknum) )
+
+weeknum     = [plus / minus] ordwk
+
+bymolist    = ( monthnum *("," monthnum) )
+
+monthnum    = 1*2DIGIT       ;1 to 12
+
+bysplist    = ( setposday *("," setposday) )
+
+setposday   = yeardaynum
+
+ALPHA          =  %x41-5A / %x61-7A     ; A-Z / a-z
+
+DIGIT          =  %x30-39               ; 0-9
+
+DQUOTE         =  %x22                  ; " (Double Quote)
+
+CRLF           =  CR LF / CR / LF       ; Internet standard newline
+
+CR             =  %x0D                  ; carriage return
+
+LF             =  %x0A                  ; linefeed                           
+
+WSP            =  SP / HTAB             ; white space
+
+SP             =  %x20                  ; space
+
+HTAB           =  %x09                  ; horizontal tab
+
+QSAFE-CHAR    = WSP / %x21 / %x23-7E / NON-US-ASCII
+
+SAFE-CHAR     = WSP / %x21 / %x23-2B / %x2D-39 / %x3C-7E
+
+NON-US-ASCII  = UTF8-2 / UTF8-3 / UTF8-4
+
+UTF8-2      = %xC2-DF UTF8-tail
+
+UTF8-3      = %xE0 %xA0-BF UTF8-tail / %xE1-EC 2( UTF8-tail ) /
+              %xED %x80-9F UTF8-tail / %xEE-EF 2( UTF8-tail )
+
+UTF8-4      = %xF0 %x90-BF 2( UTF8-tail ) / %xF1-F3 3( UTF8-tail ) /
+              %xF4 %x80-8F 2( UTF8-tail )
+
+UTF8-tail   = %x80-BF

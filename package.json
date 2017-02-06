@@ -1,11 +1,13 @@
 {
   "name": "rfc5545-rrule",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "RFC 5545 RRule Library",
   "main": "./lib/index.js",
   "scripts": {
-    "test": "tsc -p ./src && qunit -c ./lib/index.js -t ./lib/test/*.js",
-    "compile": "tsc -p ./src"
+    "pretest": "tsc -p ./src",
+    "test": "qunit -c ./lib/index.js -t ./lib/test/*.js",
+    "compile": "tsc -p ./src",
+    "prepublish": "tsc -p ./src"
   },
   "keywords": [
     "RRule",

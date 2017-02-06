@@ -1,8 +1,9 @@
 {
   "name": "rfc5545-rrule",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "RFC 5545 RRule Library",
   "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
     "pretest": "tsc -p ./src",
     "test": "qunit -c ./lib/index.js -t ./lib/test/*.js",

@@ -73,27 +73,27 @@ export class RRule implements Options {
     interval: number = 1;
 
     /** The second(s) on which the recurrence repeats. Valid values are 0 - 60. */
-    bySecond: number[];
+    bySecond: number[] = [];
 
     /** The minute(s) on which the recurrence repeats. Valid values are 0 - 59 */
-    byMinute: number[];
+    byMinute: number[] = [];
 
     /** The hour(s) on which the recurrence repeats. Valid values are 0 - 23 */
-    byHour: number[];
+    byHour: number[] = [];
 
     /** The day(s) on which this recurrence repeats. See Day */
-    byDay: Day[];
+    byDay: Day[] = [];
 
     /** The month day(s) of the month on which this recurrence repeats. Valid values are
      * [-31, -1] and [1, 31]. Not valid when the frequency is weekly.
      */
-    byMonthDay: number[];
+    byMonthDay: number[] = [];
 
     /** The year day(s) of the year on which this recurrence repeats. Valid values are
      * [-366, -1] and [1, 366]. Not valid when the frequency is daily, weekly,
      * or monthly.
      */
-    byYearDay: number[];
+    byYearDay: number[] = [];
 
     /**
      * The week number(s) (as defined by [ISO.8601.2004](https://tools.ietf.org/html/rfc5545#ref-ISO.8601.2004))
@@ -101,14 +101,14 @@ export class RRule implements Options {
      * A week is defined as a seven day period, starting on the day of the week
      * defined to be the week start. Not valid when the frequency is not yearly.
      */
-    byWeekNumber: number[];
+    byWeekNumber: number[] = [];
 
     /** The month(s) on which the recurrence repeats. Valid values are 0 - 11,
      * with 0 being January and 11 being December.
      */
-    byMonth: Month[];
+    byMonth: Month[] = [];
 
-    bySetPosition: number[];
+    bySetPosition: number[] = [];
 
     /**
      * Specifies the day on which the week starts. Defaults to 1 (Monday).

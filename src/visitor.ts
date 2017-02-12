@@ -7,7 +7,8 @@ function pad(num: number) {
 }
 
 export function visitRRule(rrule: RRule): string {
-    const recur = [];
+    const recur: string[] = [];
+    let collected: string | undefined;
 
     recur.push(visitRRuleFrequency(rrule.frequency));
 
@@ -16,47 +17,80 @@ export function visitRRule(rrule: RRule): string {
     }
 
     if (rrule.count) {
-        recur.push(visitRRuleCount(rrule.count));
+        collected = visitRRuleCount(rrule.count);
+        if (collected) {
+            recur.push(collected);
+        }
     }
 
     if (rrule.interval !== 1) {
-        recur.push(visitRRuleInterval(rrule.interval));
+        collected = visitRRuleInterval(rrule.interval);
+        if (collected) {
+            recur.push(collected);
+        }
     }
 
     if (rrule.bySecond) {
-        recur.push(visitRRuleBySecond(rrule.bySecond));
+        collected = visitRRuleBySecond(rrule.bySecond);
+        if (collected) {
+            recur.push(collected);
+        }
     }
 
     if (rrule.byMinute) {
-        recur.push(visitRRuleByMinute(rrule.byMinute));
+        collected = visitRRuleByMinute(rrule.byMinute);
+        if (collected) {
+            recur.push(collected);
+        }
     }
 
     if (rrule.byHour) {
-        recur.push(visitRRuleByHour(rrule.byHour));
+        collected = visitRRuleByHour(rrule.byHour);
+        if (collected) {
+            recur.push(collected);
+        }
     }
 
     if (rrule.byDay) {
-        recur.push(visitRRuleByDay(rrule.byDay));
+        collected = visitRRuleByDay(rrule.byDay);
+        if (collected) {
+            recur.push(collected);
+        }
     }
 
     if (rrule.byMonthDay) {
-        recur.push(visitRRuleByMonthDay(rrule.byMonthDay));
+        collected = visitRRuleByMonthDay(rrule.byMonthDay);
+        if (collected) {
+            recur.push(collected);
+        }
     }
 
     if (rrule.byYearDay) {
-        recur.push(visitRRuleByYearDay(rrule.byYearDay));
+        collected = visitRRuleByYearDay(rrule.byYearDay);
+        if (collected) {
+            recur.push(collected);
+        }
     }
 
     if (rrule.byWeekNumber) {
-        recur.push(visitRRuleByWeekNumber(rrule.byWeekNumber));
+        collected = visitRRuleByWeekNumber(rrule.byWeekNumber);
+        if (collected) {
+            recur.push(collected);
+        }
     }
 
     if (rrule.byMonth) {
-        recur.push(visitRRuleByMonth(rrule.byMonth));
+        collected = visitRRuleByMonth(rrule.byMonth);
+        if (collected) {
+            recur.push(collected);
+        }
     }
 
     if (rrule.bySetPosition) {
-        recur.push(visitRRuleBySetPosition(rrule.bySetPosition));
+        collected = visitRRuleBySetPosition(rrule.bySetPosition);
+        if (collected) {
+            recur.push(collected);
+        }
     }
 
     if (rrule.weekStart !== 1) {
@@ -82,17 +116,21 @@ function visitRRuleUntil(until: Date): string {
         "Z";
 }
 
-function visitNumber(field: string, values: number | number[]) {
+function visitNumber(field: string, values: number | number[]): string | undefined {
     if (Array.isArray(values)) {
-        return field + "=" + values.join(",");
+        if (values.length > 0) {
+            return field + "=" + values.join(",");
+        }
+
+        return;
     }
 
     return field + "=" + values;
 }
 
-const visitRRuleCount = (count: number): string => visitNumber("COUNT", count);
+const visitRRuleCount = (count: number): string | undefined => visitNumber("COUNT", count);
 
-const visitRRuleInterval = (interval: number): string => visitNumber("INTERVAL", interval);
+const visitRRuleInterval = (interval: number): string | undefined => visitNumber("INTERVAL", interval);
 
 const visitRRuleBySecond = (v: number[]) => visitNumber("BYSECOND", v);
 
@@ -100,7 +138,10 @@ const visitRRuleByMinute = (v: number[]) => visitNumber("BYMINUTE", v);
 
 const visitRRuleByHour = (v: number[]) => visitNumber("BYHOUR", v);
 
-function visitRRuleByDay(values: Day[]) {
+function visitRRuleByDay(values: Day[]): string | undefined {
+    if (values.length === 0) {
+        return;
+    }
     return "BYDAY=" + values.map(v => (v.nth || "") + weekdays[v.value]).join(",");
 }
 

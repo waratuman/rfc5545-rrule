@@ -135,4 +135,6 @@ export class RRule implements Options {
         return visitRRule(this);
     }
 
+    toJSON = this.toString;
+
 }

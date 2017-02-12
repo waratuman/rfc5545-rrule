@@ -1,6 +1,6 @@
 {
   "name": "rfc5545-rrule",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "RFC 5545 RRule Library",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",

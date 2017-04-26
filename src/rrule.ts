@@ -137,4 +137,39 @@ export class RRule implements Options {
 
     toJSON = this.toString;
 
+    // occurrences(startDate: Date, endDate: Date) {
+    //     let cursor: Date = new Date(startDate.valueOf());
+    //     let until = this.until ? this.until : endDate;
+    //     let count = this.count;
+    //     let occurences: Date[] = [];
+
+    //     while (until ? cursor < until : occurences.length < count) {
+    //         switch (this.frequency) {
+    //             case 'secondly':
+    //                 cursor.setSeconds(cursor.getSeconds() + this.interval);
+    //                 break; 
+    //             case 'minutely':
+    //                 cursor.setMinutes(cursor.getMinutes() + this.interval);
+    //                 break;
+    //             case 'hourly':
+    //                 cursor.setMinutes(cursor.getMinutes() + this.interval);
+    //                 break;
+    //             case 'daily':
+    //                 cursor.setMinutes(cursor.getMinutes() + this.interval);
+    //                 break;
+    //             case 'weekly':
+    //                 cursor.setMinutes(cursor.getMinutes() + this.interval);
+    //                 break;
+    //             case 'monthly':
+    //                 cursor.setMonth(cursor.getMonth() + this.interval);
+    //                 break;
+    //             case 'yearly':
+    //                 cursor.setFullYear(cursor.getFullYear() + this.interval);
+    //                 break;
+    //         }
+    //     }
+
+    //     return occurences;
+    // }
+
 }

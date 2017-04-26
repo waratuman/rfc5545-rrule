@@ -1,12 +1,12 @@
 {
   "name": "rfc5545-rrule",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "RFC 5545 RRule Library",
-  "main": "./lib/index.js",
+  "main": "./builds/rrule.cjs.js",
   "types": "./lib/index.d.ts",
   "scripts": {
     "pretest": "./scripts/compile.sh",
-    "test": "qunit -c ./lib/index.js -t ./lib/test/*.js",
+    "test": "qunit -c ./builds/rrule.cjs.js -t ./lib/test/*.js",
     "compile": "./scripts/compile.sh",
     "prepublish": "./scripts/compile.sh"
   },
@@ -28,16 +28,17 @@
   "author": "James Bracy <waratuman@gmail.com> (http://waratuman.com)",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^7.0.5",
+    "@types/node": "^7.0.13",
     "@types/qunit": "^2.0.31",
-    "apg": "^2.2.2",
-    "qunit": "^0.9.1",
-    "rollup": "^0.41.4",
-    "tslint": "^4.3.1",
-    "typescript": "^2.1.5"
+    "apg": "^3.1.1",
+    "qunit": "^1.0.0",
+    "rollup": "^0.41.6",
+    "tslint": "^5.1.0",
+    "typescript": "^2.2.2"
   },
   "repository": "https://github.com/waratuman/rfc5545-rrule",
   "dependencies": {
-    "nearley": "^2.7.11"
+    "nearley": "^2.8.0",
+    "nearly": "^1.8.1"
   }
 }

@@ -1,8 +1,9 @@
 {
   "name": "rfc5545-rrule",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "RFC 5545 RRule Library",
   "main": "./builds/rrule.cjs.js",
+  "module": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
     "pretest": "./scripts/compile.sh",

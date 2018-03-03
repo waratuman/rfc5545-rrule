@@ -39,7 +39,6 @@
   },
   "repository": "https://github.com/waratuman/rfc5545-rrule",
   "dependencies": {
-    "nearley": "^2.8.0",
-    "nearly": "^1.8.1"
+    "nearley": "^2.8.0"
   }
 }

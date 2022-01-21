@@ -49,3 +49,18 @@ let rrule = RRule.fromString("RRULE:FREQ=YEARLY;INTERVAL=4;BYMONTH=11;BYDAY=TU;B
 ```
 ## License
 [ICS](https://github.com/waratuman/rfc5545-rrule/blob/master/LICENSE)
+
+## Development
+
+### Compiling the grammar
+
+```bash
+npx nearleyc ./src/grammar.ne -o ./src/grammar.ts
+```
+
+Update `./src/grammar.ts` to export `ParserRules` and `ParserStart`. Also, remove
+the wrapping function and export at the bottom of the file.
+
+```bash
+npm run compile
+````

@@ -127,6 +127,9 @@ QUnit.test("BYYEARDAY", (assert) => {
 
     rrule = RRule.fromString("RRULE:FREQ=YEARLY;BYYEARDAY=1,12");
     assert.deepEqual(rrule.byYearDay, [1, 12]);
+
+    rrule = RRule.fromString("RRULE:FREQ=YEARLY;INTERVAL=3;COUNT=10;BYYEARDAY=1,100,240");
+    assert.deepEqual(rrule.byYearDay, [ 1, 100, 240 ])
 });
 
 /**

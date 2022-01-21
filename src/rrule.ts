@@ -1,6 +1,7 @@
 import { Parser } from "nearley";
 
 import { visitRRule } from "./visitor";
+
 import { ParserRules, ParserStart } from "./grammar";
 
 export type Weekday = 0 | 1 | 2 | 3 | 4 | 5 | 6;

@@ -2,6 +2,8 @@
 
 set -e
 
+rm -rf ./builds/* ./lib/*
+
 tsc -p ./src
 
 rollup -e nearley,qunit -u rfc5545-rrule  -f amd -i lib/rrule.js -o builds/rrule.amd.js

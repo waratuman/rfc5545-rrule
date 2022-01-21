@@ -96,7 +96,7 @@ dateValue -> dateFullyear dateMonth dateMday
 
 dateFullyear -> DIGIT DIGIT DIGIT DIGIT
     {% integer %}
- 
+
 dateMonth -> DIGIT DIGIT
     {% (d: any) => (integer(d) - 1) %}
 
@@ -181,13 +181,13 @@ yeardaynum -> (plus | minus):? ordyrday
     {% integer %}
 
 ordyrday -> DIGIT (DIGIT DIGIT:?):?
-    {% integer %}
+    {% (data: any[]) => integer(flatten(data)) %}
 
 bywknolist -> weeknum ("," weeknum):*
     {% (data: any[]) => [data[0]].concat(data[1].map((d: any) => d[1])) %}
 
 weeknum -> (plus | minus):? ordwk
-    {% integer %}
+    {% (data: any[]) => integer(flatten(data)) %}
 
 bymolist -> monthnum ("," monthnum):*
     {% (data: any[]) => [data[0]].concat(data[1].map((d: any) => d[1])) %}

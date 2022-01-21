@@ -1,13 +1,13 @@
 {
   "name": "rfc5545-rrule",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "RFC 5545 RRule Library",
   "main": "./builds/rrule.cjs.js",
   "module": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
     "pretest": "./scripts/compile.sh",
-    "test": "qunit -c ./builds/rrule.cjs.js -t ./builds/test/*.js",
+    "test": "qunit -c ./builds/rrule.cjs.js -t builds/test/*.js",
     "compile": "./scripts/compile.sh",
     "prepublish": "./scripts/compile.sh"
   },
